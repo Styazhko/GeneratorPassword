@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Генерация пароля</title>
+</head>
+<body>
+<div class="card text-center alert alert-warning" role="alert">
+<h1>Сгенерируйте пароль</h1>
+<form action="{% url 'password' %}">
+<h3>Длинна пароля:</h3>
+<select name="length">
+{% for length in length_list %}
+<option value="{{ length }}">{{ length }}</option>
+{% endfor %}
+</select>
+<h3>Добавить в пароль:</h3>
+{% for checkbox in checkbox_list %}
+<br>
+<input type="checkbox" name="{{ checkbox }}">{{ checkbox }}
+{% endfor %}
+<br>
+<input class="btn btn-primary" type="submit" value="Сгенерировать пароль">
+</form>
+</div>
+</body>
+</html>
